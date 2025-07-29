@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "D:\\MCP-ModelContextProtocol\\mcp-demo-spring-python"
+      ]
+    },
+    "Python_MCP_Server": {
+      "command": "D:\\download\\Anaconda\\envs\\env_MCP\\Scripts\\uv.exe",
+      "args": [
+        "run",
+        "--with",
+        "mcp[cli]",
+        "mcp",
+        "run",
+        "D:/MCP-ModelContextProtocol/mcp-demo-spring-python/python-mcp-server0/server.py"
+      ]
+    }
+  }
+}

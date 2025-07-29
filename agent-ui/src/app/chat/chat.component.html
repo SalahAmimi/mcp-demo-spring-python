@@ -1,0 +1,144 @@
+<!-- <div class="chatgpt-container p-3" style="max-width: 700px; margin: 0 auto; background: #f4f6fb; min-height: 100vh;">
+  <div class="chat-history card mb-3 shadow-sm border-0" style="height: 450px; overflow-y: auto; background: #fff;">
+    <div *ngFor="let msg of messages; let i = index" class="chat-message mb-3 d-flex" [ngClass]="{'flex-row-reverse': msg.role === 'user'}">
+      <div class="avatar me-2 ms-2" [ngStyle]="{ 'background': msg.role === 'user' ? '#0d6efd' : '#e0e0e0', 'color': msg.role === 'user' ? '#fff' : '#333', 'width': '40px', 'height': '40px', 'border-radius': '50%', 'display': 'flex', 'align-items': 'center', 'justify-content': 'center', 'font-weight': 'bold', 'font-size': '1.2rem' }">
+        <span *ngIf="msg.role === 'user'">U</span>
+        <span *ngIf="msg.role === 'assistant'">A</span>
+      </div>
+      <div style="max-width: 80%;">
+        <div [ngClass]="{'bg-primary text-white': msg.role === 'user', 'bg-light': msg.role === 'assistant'}" class="rounded px-3 py-2 mb-1 shadow-sm" style="word-break: break-word;">
+          <span *ngIf="msg.role === 'user'">
+            {{ msg.content }}
+          </span>
+          <span *ngIf="msg.role === 'assistant'">
+            <markdown [data]="msg.content"></markdown>
+          </span>
+        </div>
+        <div class="text-muted small" [ngClass]="{'text-end': msg.role === 'user', 'text-start': msg.role === 'assistant'}">
+          <span *ngIf="msg.timestamp">{{ msg.timestamp }}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="progress" class="text-center mt-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+  <form (ngSubmit)="askAgentStream()" class="d-flex align-items-center bg-white p-3 rounded shadow-sm" style="position: sticky; bottom: 0;">
+    <input [(ngModel)]="query" name="query" autocomplete="off" placeholder="Type your message..." class="form-control me-2" style="flex: 1; border-radius: 20px;" type="text" [disabled]="progress">
+    <button type="submit" [disabled]="progress || !query" class="btn btn-primary px-4 rounded-pill">Send</button>
+  </form>
+</div>
+ -->
+
+
+ <!-- <div class="chatgpt-container p-3" style="max-width: 720px; margin: 0 auto; background: #f4f6fb; min-height: 100vh; display: flex; flex-direction: column;">
+
+
+  <div class="chat-history card mb-3 shadow-sm border-0 flex-grow-1" style="overflow-y: auto; background: #fff;">
+    <div *ngFor="let msg of messages" class="chat-message d-flex mb-4 align-items-start" [ngClass]="{'flex-row-reverse': msg.role === 'user'}">
+
+
+      <div class="icon-avatar mx-2 d-flex justify-content-center align-items-center rounded-circle shadow-sm"
+           [ngClass]="msg.role === 'user' ? 'bg-primary text-white' : 'bg-secondary text-white'"
+           style="width: 40px; height: 40px; font-size: 1.4rem;">
+        <i [ngClass]="msg.role === 'user' ? 'bi-person' : 'bi-robot'"></i>
+      </div>
+
+
+      <div class="message-content" style="max-width: 80%;">
+        <div [ngClass]="{'bg-primary text-white': msg.role === 'user', 'bg-light': msg.role === 'assistant'}"
+             class="rounded px-3 py-2 shadow-sm" style="word-break: break-word;">
+          <ng-container *ngIf="msg.role === 'assistant'; else userText">
+            <markdown [data]="msg.content"></markdown>
+          </ng-container>
+          <ng-template #userText>{{ msg.content }}</ng-template>
+        </div>
+        <div class="text-muted small mt-1" [ngClass]="{'text-end': msg.role === 'user', 'text-start': msg.role === 'assistant'}">
+          {{ msg.timestamp }}
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="progress" class="text-center my-3">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <form (ngSubmit)="askAgentStream()" class="bg-white p-3 rounded shadow-sm d-flex align-items-center" style="position: sticky; bottom: 0; z-index: 1;">
+    <input [(ngModel)]="query" name="query" autocomplete="off" placeholder="Type your message..."
+           class="form-control me-2" style="border-radius: 30px;" type="text" [disabled]="progress">
+    <button type="submit" [disabled]="progress || !query"
+            class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center"
+            style="width: 44px; height: 44px;">
+      <i class="bi bi-send-fill"></i>
+    </button>
+  </form>
+</div> -->
+
+<div class="chatgpt-container p-3" style="max-width: 720px; margin: 0 auto; background: #f4f6fb; min-height: 100vh; display: flex; flex-direction: column;">
+
+
+  <div class="chat-history card mb-3 shadow-sm border-0 flex-grow-1" style="overflow-y: auto; background: #fff;">
+    <div *ngFor="let msg of messages" class="chat-message d-flex mb-4 align-items-start" [ngClass]="{'flex-row-reverse': msg.role === 'user'}">
+
+
+      <div class="icon-avatar mx-2 d-flex justify-content-center align-items-center rounded-circle shadow-sm"
+           [ngClass]="msg.role === 'user' ? 'bg-primary text-white' : 'bg-secondary text-white'"
+           style="width: 40px; height: 40px; font-size: 1.4rem;">
+        <i [ngClass]="msg.role === 'user' ? 'bi-person' : 'bi-robot'"></i>
+      </div>
+
+
+      <div class="message-content" style="max-width: 80%;">
+        <div [ngClass]="{'bg-primary text-white': msg.role === 'user', 'bg-light': msg.role === 'assistant'}"
+             class="rounded px-3 py-2 shadow-sm" style="word-break: break-word;">
+          <ng-container *ngIf="msg.role === 'assistant'; else userText">
+            <markdown [data]="msg.content"></markdown>
+          </ng-container>
+          <ng-template #userText>{{ msg.content }}</ng-template>
+        </div>
+        <div class="text-muted small mt-1" [ngClass]="{'text-end': msg.role === 'user', 'text-start': msg.role === 'assistant'}">
+          {{ msg.timestamp }}
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="progress" class="chat-message d-flex mb-4 align-items-start">
+
+      <div class="icon-avatar mx-2 d-flex justify-content-center align-items-center rounded-circle shadow-sm bg-secondary text-white"
+           style="width: 40px; height: 40px; font-size: 1.4rem;">
+        <i class="bi bi-robot"></i>
+      </div>
+
+      <div #scrollContainer class="chat-history card mb-3 shadow-sm border-0 flex-grow-1"
+     style="overflow-y: auto; background: #fff;">
+
+
+      <div class="message-content" style="max-width: 80%;">
+        <div class="bg-light rounded px-3 py-2 shadow-sm d-inline-flex align-items-center" style="height: 38px;">
+          <div class="spinner-border spinner-border-sm text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <span class="ms-2 small text-muted">Thinking...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <form (ngSubmit)="askAgent()" class="bg-white p-3 rounded shadow-sm d-flex align-items-center" style="position: sticky; bottom: 0; z-index: 1;">
+  <input [(ngModel)]="query" name="query" autocomplete="off" placeholder="Type your message..."
+         class="form-control me-2" style="border-radius: 30px;" type="text" [disabled]="progress">
+  <button type="submit" [disabled]="progress || !query"
+          class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center"
+          style="width: 44px; height: 44px;">
+    <i class="bi bi-send-fill"></i>
+  </button>
+</form>
+
+</div>

@@ -1,0 +1,31 @@
+.chat-window {
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.user-message {
+  text-align: right;
+  background-color: #d1e7dd;
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: inline-block;
+}
+
+.assistant-message {
+  text-align: left;
+  background-color: #f8d7da;
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 16px;
+  display: inline-block;
+}
+
+.input-bar {
+  display: flex;
+  gap: 10px;
+}
